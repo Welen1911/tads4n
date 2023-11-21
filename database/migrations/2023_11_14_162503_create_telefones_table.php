@@ -27,6 +27,8 @@ class CreateTelefonesTable extends Migration
                 ->cascadeOnUpdate();
 
             $table->timestamps();
+            $table->softDeletes();
+
         });
     }
 

@@ -38,8 +38,12 @@
                         <td class="px-2">{{ $usuario->telefone->telfixo }}</td>
                         <td class="px-2">
                             <a href="{{ route('usuario.edit', $usuario->id) }}" class="text-green-500 underline">Editar</a>
-                            <a href="{{ route('usuario.destroy', $usuario->id) }}"
-                                class="text-red-500 underline">Deletar</a>
+                            <form action="{{ route('usuario.destroy', $usuario->id) }}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <input type="submit"
+                                    class="text-red-500 underline" value="Deletar">
+                                </form>
                         </td>
                     </tr>
                 @endforeach

@@ -65,6 +65,10 @@ class UsuarioController extends Controller
     public function destroy(Usuario $usuario)
     {
         // dd($usuario);
+        $usuario->telefone->destroy($usuario->telefone->id);
+        foreach($usuario->endereco as $endereco) {
+            $endereco->destroy($endereco->id);
+        }
         $usuario->destroy($usuario->id);
         return redirect()->route('usuario.index');
     }
