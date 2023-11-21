@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EnderecoController;
 use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,6 +17,6 @@ Route::get('usuario/{usuario}', [UsuarioController::class, 'show'])->name('usuar
 Route::post('/endereco/{usuario}', [UsuarioController::class, 'storeEndereco'])->name('usuario.storeEndereco');
 Route::get('/endereco/{usuario}', [UsuarioController::class, 'createEndereco'])->name('usuario.createEndereco');
 
-Route::get('/endereco/edit/{endereco}', [UsuarioController::class, 'editEndereco'])->name('usuario.editEndereco');
-Route::put('/endereco/edit/{endereco}', [UsuarioController::class, 'updateEndereco'])->name('usuario.updateEndereco');
+Route::get('/endereco/edit/{endereco}/{usuario}', [EnderecoController::class, 'edit'])->name('endereco.edit');
+Route::put('/endereco/edit/{endereco}/{usuario}', [EnderecoController::class, 'update'])->name('endereco.update');
 

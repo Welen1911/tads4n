@@ -10,7 +10,7 @@ class UsuarioController extends Controller
 {
     public function index()
     {
-        $usuarios = Usuario::all();
+        $usuarios = Usuario::paginate(1);
 
         return view('usuarios.index', compact('usuarios'));
     }
@@ -81,18 +81,5 @@ class UsuarioController extends Controller
         ]);
 
         return redirect()->route('usuario.show', $usuario->id);
-    }
-
-    public function editEndereco(Endereco $endereco) {
-        return view('enderecos.edit', compact('endereco'));
-    }
-
-    public function updateEndereco( Endereco $endereco, Request $request) {
-        $endereco->update([
-            'logradouro' => $request->logradouro,
-            'numero' => $request->numero,
-        ]);
-
-        return redirect()->route('usuario.index');
     }
 }

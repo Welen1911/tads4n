@@ -43,7 +43,7 @@
                             <td class="px-2">{{ $endereco->logradouro }}</td>
                             <td class="px-2">{{ $endereco->numero }}</td>
                             <td class="px-2">
-                                <a href="{{ route('usuario.editEndereco', $endereco->id) }}" class="text-green-500 underline">Editar</a>
+                                <a href="{{ route('endereco.edit', [$endereco->id, $usuario->id]) }}" class="text-green-500 underline">Editar</a>
                             {{-- <a href="{{ route('usuario.destroy', $usuario->id) }}"
                                 class="text-red-500 underline">Deletar</a> --}}
                             </td>

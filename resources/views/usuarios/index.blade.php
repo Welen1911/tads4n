@@ -44,6 +44,7 @@
                     </tr>
                 @endforeach
             </table>
+            {{ $usuarios->links() }}
         @else
         @endif
     </div>

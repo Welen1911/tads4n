@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Endereco;
+use App\Models\Usuario;
 use Illuminate\Http\Request;
 
 class EnderecoController extends Controller
@@ -55,9 +56,9 @@ class EnderecoController extends Controller
      * @param  \App\Models\Endereco  $endereco
      * @return \Illuminate\Http\Response
      */
-    public function edit(Endereco $endereco)
+    public function edit(Endereco $endereco,  Usuario $usuario)
     {
-        //
+        return view('enderecos.edit', compact('endereco', 'usuario'));
     }
 
     /**
@@ -67,9 +68,14 @@ class EnderecoController extends Controller
      * @param  \App\Models\Endereco  $endereco
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Endereco $endereco)
+    public function update(Request $request, Endereco $endereco, Usuario $usuario)
     {
-        //
+        $endereco->update([
+            'logradouro' => $request->logradouro,
+            'numero' => $request->numero,
+        ]);
+
+        return redirect()->route('usuario.show', compact('usuario'));
     }
 
     /**
