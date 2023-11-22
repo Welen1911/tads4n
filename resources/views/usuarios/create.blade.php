@@ -3,6 +3,12 @@
 @section('titulo', 'Cadastro de Usuário')
 
 @section('conteudo')
+    @if ($errors->any())
+    @dd($errors->all())
+        {{-- @foreach ($errors->all() as $error)
+            <p>{{ $error }}</p>
+        @endforeach --}}
+    @endif
     <form action="{{ route('usuario.store') }}" method="post" class="bg-gray-200 w-96 p-4 rounded-lg shadow-2xl">
         @csrf
         <table class="m-auto">
@@ -80,8 +86,7 @@
                     <label for="telfixo">Número:</label>
                 </td>
                 <td>
-                    <input title="Número..." type="text" name="numero" id="telfixo"
-                        value="{{ old('numero') }}"
+                    <input title="Número..." type="text" name="numero" id="telfixo" value="{{ old('numero') }}"
                         class="border-b-2 border-green-400 rounded text-sm px-1 w-72 h-6 text-gray-500 focus:border-green-800">
                 </td>
             </tr>
