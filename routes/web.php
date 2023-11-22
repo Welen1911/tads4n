@@ -20,3 +20,4 @@ Route::get('/endereco/{usuario}', [EnderecoController::class, 'create'])->name('
 Route::get('/endereco/edit/{endereco}/{usuario}', [EnderecoController::class, 'edit'])->name('endereco.edit');
 Route::put('/endereco/edit/{endereco}/{usuario}', [EnderecoController::class, 'update'])->name('endereco.update');
 
+Route::delete('/endereco/destroy/{endereco}/{usuario}', [EnderecoController::class, 'destroy'])->name('endereco.destroy');

@@ -35,7 +35,7 @@ class EnderecoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store( Usuario $usuario, EnderecoStore $request)
+    public function store(Usuario $usuario, EnderecoStore $request)
     {
         Endereco::create([
             'logradouro' => $request->logradouro,
@@ -91,8 +91,14 @@ class EnderecoController extends Controller
      * @param  \App\Models\Endereco  $endereco
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Endereco $endereco)
+    public function destroy(Endereco $endereco, Usuario $usuario)
     {
-        //
+        if ($usuario->id != $endereco->usuario_id)
+            return back();
+        else {
+            $endereco->delete();
+
+            return redirect()->route('usuario.show', compact('usuario'));
+        }
     }
 }
