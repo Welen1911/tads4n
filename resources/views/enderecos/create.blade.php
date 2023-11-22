@@ -8,7 +8,7 @@
 
 
         <div>
-            <form action="{{ route('usuario.storeEndereco', $usuario->id) }}" method="post"
+            <form action="{{ route('endereco.store', $usuario->id) }}" method="post"
                 class="bg-white w-96 p-4 rounded-lg shadow-2xl">
                 @csrf
                 @include('enderecos.form')

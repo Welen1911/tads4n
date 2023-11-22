@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EnderecoStore;
+use App\Http\Requests\UsuarioStore;
+use App\Http\Requests\UsuarioUpdate;
 use App\Models\Endereco;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
@@ -14,11 +17,13 @@ class UsuarioController extends Controller
 
         return view('usuarios.index', compact('usuarios'));
     }
+
     public function create()
     {
         return view('usuarios.create');
     }
-    public function store(Request $request)
+
+    public function store(UsuarioStore $request)
     {
         // dd($request->all());
         $usuario = Usuario::create([
@@ -39,15 +44,18 @@ class UsuarioController extends Controller
 
         return redirect()->route('usuario.index');
     }
+
     public function show(Usuario $usuario)
     {
         return view('usuarios.show', compact('usuario'));
     }
+
     public function edit(Usuario $usuario)
     {
         return view('usuarios.edit', compact('usuario'));
     }
-    public function update(Request $request, Usuario $usuario)
+
+    public function update(UsuarioUpdate $request, Usuario $usuario)
     {
         $usuario->update([
             'nome' => strtolower($request->nome),
@@ -62,28 +70,14 @@ class UsuarioController extends Controller
 
         return redirect()->route('usuario.index');
     }
+
     public function destroy(Usuario $usuario)
     {
-        // dd($usuario);
         $usuario->telefone->destroy($usuario->telefone->id);
         foreach($usuario->endereco as $endereco) {
             $endereco->destroy($endereco->id);
         }
         $usuario->destroy($usuario->id);
         return redirect()->route('usuario.index');
-    }
-
-    public function createEndereco(Usuario $usuario)
-    {
-        return view('enderecos.create', compact('usuario'));
-    }
-
-    public function storeEndereco(Usuario $usuario, Request $request) {
-        $usuario->endereco()->create([
-            'logradouro' => $request->logradouro,
-            'numero' => $request->numero,
-        ]);
-
-        return redirect()->route('usuario.show', $usuario->id);
     }
 }

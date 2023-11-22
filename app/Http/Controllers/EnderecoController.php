@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EnderecoStore;
 use App\Models\Endereco;
 use App\Models\Usuario;
 use Illuminate\Http\Request;
@@ -23,9 +24,9 @@ class EnderecoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Usuario $usuario)
     {
-        //
+        return view('enderecos.create', compact('usuario'));
     }
 
     /**
@@ -34,9 +35,15 @@ class EnderecoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store( Usuario $usuario, EnderecoStore $request)
     {
-        //
+        Endereco::create([
+            'logradouro' => $request->logradouro,
+            'numero' => $request->numero,
+            'usuario_id' => $usuario->id,
+        ]);
+
+        return redirect()->route('usuario.show', $usuario->id);
     }
 
     /**
@@ -68,7 +75,7 @@ class EnderecoController extends Controller
      * @param  \App\Models\Endereco  $endereco
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Endereco $endereco, Usuario $usuario)
+    public function update(EnderecoStore $request, Endereco $endereco, Usuario $usuario)
     {
         $endereco->update([
             'logradouro' => $request->logradouro,

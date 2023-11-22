@@ -22,7 +22,7 @@
                         Telefone: {{ $usuario->telefone->telfixo }}
                     </li>
                     <li>
-                        <a href="{{ route('usuario.createEndereco', $usuario->id) }}" class="text-green-500 underline">Cadastrar Endereço</a>
+                        <a href="{{ route('endereco.create', $usuario->id) }}" class="text-green-500 underline">Cadastrar Endereço</a>
                     </li>
                 </ul>
             </div>
