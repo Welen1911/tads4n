@@ -33,4 +33,17 @@ class UsuarioStore extends FormRequest
             'numero' => 'required|int|max:250',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'nome.required' => 'Preencha o campo nome!',
+            'email.required' => 'Preencha o campo email!',
+            'senha.required' => 'Preencha o campo senha!',
+            'celular.required' => 'Preencha o campo celular!',
+            'telfixo.required' => 'Preencha o campo fixo!',
+            'logradouro.required' => 'Preencha o campo logradouro!',
+            'numero.required' => 'Preencha o campo número!',
+        ];
+    }
 }

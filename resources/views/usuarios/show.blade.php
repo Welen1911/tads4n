@@ -26,7 +26,7 @@
                     </li>
                 </ul>
             </div>
-            @if (isset($usuario->endereco))
+            @if (count($usuario->endereco) > 0)
                 <table class="min-w-full bg-white border border-gray-300 rounded-md shadow-md shadow-gray-400">
                     <tr>
                         <td class="py-2 px-4 border-b">ID</td>

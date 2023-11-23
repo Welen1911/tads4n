@@ -28,4 +28,12 @@ class EnderecoStore extends FormRequest
             'numero' => 'required|int|max:250',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'logradouro.required' => 'Preencha o campo logradouro!',
+            'numero.required' => 'Preencha o campo número!',
+        ];
+    }
 }

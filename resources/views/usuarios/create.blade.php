@@ -13,7 +13,7 @@
                 @endforeach
             </div>
         @endif
-        <div style="margin-top: 15px">
+        <div>
             <form action="{{ route('usuario.store') }}" method="post" class="bg-gray-200 w-96 p-4 rounded-lg shadow-2xl">
                 @csrf
                 <table class="m-auto">

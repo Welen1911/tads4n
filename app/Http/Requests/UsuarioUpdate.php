@@ -30,4 +30,15 @@ class UsuarioUpdate extends FormRequest
             'telfixo' => 'required|string|max:15',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'nome.required' => 'Preencha o campo nome!',
+            'email.required' => 'Preencha o campo email!',
+            'senha.required' => 'Preencha o campo senha!',
+            'celular.required' => 'Preencha o campo celular!',
+            'telfixo.required' => 'Preencha o campo fixo!',
+        ];
+    }
 }
